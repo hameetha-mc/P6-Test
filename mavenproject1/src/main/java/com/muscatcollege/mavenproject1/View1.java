@@ -39,7 +39,6 @@ public class View1 extends JPanel
         // Fetch (potentially) updated information and display it
         int a = model.getDataA();
         display.setText("Model data A: " + a);
-        System.out.println("I am Sheeba");
         
     } // update
     

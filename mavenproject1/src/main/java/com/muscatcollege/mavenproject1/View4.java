@@ -1,46 +1,43 @@
 package mvcexample;
 
-// This is the cyan view
-// It displays the A component of the model (data base)
+// This is the pink view.
+// It displays the B component of the model (data base).
+// As supplied, this view does not subscribe to the model as an Observer,
+// and relies on its controller to call update to cause the view to be refreshed.
 
 import java.util.*;  // For Observer
 import java.awt.*;
 import javax.swing.*;
 
-public class View1 extends JPanel 
-                   implements Observer {
+public class View4 extends JPanel {
   
     private Model model;
-    private Controller1 contr;   // Parent Frame
+    private Controller2 contr;   // Parent Frame
     
     private JTextField display;
     
     // Constructor
-    public View1(Controller1 contr, Model model) {
+    public View4(Controller2 contr, Model model) {
         
         // Record references to the parent controller and the model
         this.contr = contr;
         this.model = model;
         
         // Set up view GUI
-        setBackground(Color.cyan);
-        add(new JLabel("View1"));
+        setBackground(Color.pink);
+        add(new JLabel("View4"));
         display = new JTextField("No data", 15);
         add(display);
-        
-        // Subscribe to the model
-        model.addObserver(this);
       
     } // constructor
     
-    // Notified by the model when it is altered:
-    public void update(Observable o, Object arg) {
+    // Called by controller to refresh the view:
+    public void update() {
         
         // Fetch (potentially) updated information and display it
-        int a = model.getDataA();
-        display.setText("Model data A: " + a);
-        System.out.println("I am Sheeba");
-        
+        int b = model.getDataB();
+        display.setText("Model data B: " + b);
+      
     } // update
     
     // Called by the controller to clear the view:
@@ -48,8 +45,6 @@ public class View1 extends JPanel
         
         display.setText("");
       
-  } // clear
-  
-} // class View1
-
-
+    } // clear
+    
+} // class View4
